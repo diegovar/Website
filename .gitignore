@@ -1,0 +1,4 @@
+bin/
+obj/
+aspnet_client/
+!_bin_deployableAssemblies

@@ -1,0 +1,6 @@
+﻿@using System.Web.Mvc;
+@helper Tags(List<string> tags, string blogName, UrlHelper urlHelper) {
+    for(int i = 0; i < tags.Count; i++) {
+        <a class="tag" href="@urlHelper.Action(MVC.Blog.Tag(blogName, tags[i]))">@tags[i]</a>if(i < tags.Count - 1){<text>,</text>}
+    }
+}

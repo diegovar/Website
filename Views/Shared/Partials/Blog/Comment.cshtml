@@ -1,0 +1,13 @@
+﻿@model Website.Models.Blog.Comment
+
+<section class="comment" data-id="@Model.Id" data-poster-id="@Model.PosterId">
+    <header>
+        Posted by @Model.PosterName
+    </header>
+    <div class="content">
+        @Model.Text
+    </div>
+    <footer>
+        Posted on @HtmlHelpers.Time(Model.Date)
+    </footer>
+</section>

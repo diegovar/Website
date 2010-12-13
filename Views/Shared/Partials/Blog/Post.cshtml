@@ -1,0 +1,19 @@
+﻿@model Website.Models.Blog.Post
+
+<article>
+    <header>
+        @Model.Name
+    </header>
+    <div class="content">
+        @Html.Raw(Model.Content)
+    </div>
+    <div class="comments">
+        @foreach (var comment in Model.Comments)
+        {
+            Html.RenderPartial(MVC.Shared.Views.Partials.Blog.Comment, comment);
+        }
+    </div>
+    <footer>
+        Posted on @HtmlHelpers.Time(Model.Date)
+    </footer>
+</article>

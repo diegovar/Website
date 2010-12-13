@@ -1,0 +1,16 @@
+﻿@model Blog
+@using Website.Models.Blog;
+@{
+    Layout = Layout = MVC.Shared.Views.Layouts.BlogLayout;
+}
+
+<h2>@Model.Name</h2>
+
+
+<section id="posts">
+@foreach (var post in Model.Posts)
+{
+    Html.RenderPartial(MVC.Shared.Views.Partials.Blog.Post, post);
+}
+
+</section>
