@@ -22,12 +22,21 @@ using T4MVC;
 
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static class MVC {
-    public static Website.Controllers.BlogController Blog = new Website.Controllers.T4MVC_BlogController();
+    static readonly MusicClass s_Music = new MusicClass();
+    public static MusicClass Music { get { return s_Music; } }
+    public static Website.Controllers.Blogs.BlogController Blog = new Website.Controllers.Blogs.T4MVC_BlogController();
+    public static Website.Controllers.Blogs.PostController Post = new Website.Controllers.Blogs.T4MVC_PostController();
     public static Website.Controllers.HomeController Home = new Website.Controllers.T4MVC_HomeController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
 namespace T4MVC {
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class MusicClass {
+        public readonly string Name = "Music";
+        public Website.Areas.Music.Controllers.HomeController Home = new Website.Areas.Music.Controllers.T4MVC_HomeController();
+        public T4MVC.Music.SharedController Shared = new T4MVC.Music.SharedController();
+    }
 }
 
 namespace System.Web.Mvc {
@@ -210,7 +219,7 @@ namespace System.Web.Mvc {
             result.Controller = controller;
             result.Action = action;
             result.RouteValueDictionary = new RouteValueDictionary();
-             
+            result.RouteValueDictionary.Add("Area", area ?? ""); 
             result.RouteValueDictionary.Add("Controller", controller);
             result.RouteValueDictionary.Add("Action", action);
         }
@@ -270,37 +279,37 @@ namespace Links {
                 private const string URLPATH = "~/Scripts/javascript/lib";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-                public static readonly string dd_belatedpng_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/dd_belatedpng.min.js") ? Url("dd_belatedpng.min.js") : Url("dd_belatedpng.js");
+                public static readonly string dd_belatedpng_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/dd_belatedpng.min.js") ? Url("dd_belatedpng.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/dd_belatedpng.js") : Url("dd_belatedpng.js")+"?"+T4Extensions.TimestampString(URLPATH + "/dd_belatedpng.js");
                               
-                public static readonly string Jplayer_swf = Url("Jplayer.swf");
-                public static readonly string jquery_1_4_4_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.4.4-vsdoc.min.js") ? Url("jquery-1.4.4-vsdoc.min.js") : Url("jquery-1.4.4-vsdoc.js");
+                public static readonly string Jplayer_swf = Url("Jplayer.swf")+"?"+T4Extensions.TimestampString(URLPATH + "/Jplayer.swf");
+                public static readonly string jquery_1_4_4_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.4.4-vsdoc.min.js") ? Url("jquery-1.4.4-vsdoc.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery-1.4.4-vsdoc.js") : Url("jquery-1.4.4-vsdoc.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery-1.4.4-vsdoc.js");
                               
-                public static readonly string jquery_1_4_4_min_js = Url("jquery-1.4.4.min.js");
-                public static readonly string jquery_jplayer_min_js = Url("jquery.jplayer.min.js");
-                public static readonly string jquery_unobtrusive_ajax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.unobtrusive-ajax.min.js") ? Url("jquery.unobtrusive-ajax.min.js") : Url("jquery.unobtrusive-ajax.js");
+                public static readonly string jquery_1_4_4_min_js = Url("jquery-1.4.4.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery-1.4.4.min.js");
+                public static readonly string jquery_jplayer_min_js = Url("jquery.jplayer.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery.jplayer.min.js");
+                public static readonly string jquery_unobtrusive_ajax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.unobtrusive-ajax.min.js") ? Url("jquery.unobtrusive-ajax.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery.unobtrusive-ajax.js") : Url("jquery.unobtrusive-ajax.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery.unobtrusive-ajax.js");
                               
-                public static readonly string jquery_unobtrusive_ajax_min_js = Url("jquery.unobtrusive-ajax.min.js");
-                public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
+                public static readonly string jquery_unobtrusive_ajax_min_js = Url("jquery.unobtrusive-ajax.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery.unobtrusive-ajax.min.js");
+                public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery.validate-vsdoc.js") : Url("jquery.validate-vsdoc.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery.validate-vsdoc.js");
                               
-                public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
+                public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.min.js") ? Url("jquery.validate.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery.validate.js") : Url("jquery.validate.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery.validate.js");
                               
-                public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
-                public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
+                public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery.validate.min.js");
+                public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery.validate.unobtrusive.js") : Url("jquery.validate.unobtrusive.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery.validate.unobtrusive.js");
                               
-                public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
-                public static readonly string MicrosoftAjax_debug_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftAjax.debug.min.js") ? Url("MicrosoftAjax.debug.min.js") : Url("MicrosoftAjax.debug.js");
+                public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/jquery.validate.unobtrusive.min.js");
+                public static readonly string MicrosoftAjax_debug_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftAjax.debug.min.js") ? Url("MicrosoftAjax.debug.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/MicrosoftAjax.debug.js") : Url("MicrosoftAjax.debug.js")+"?"+T4Extensions.TimestampString(URLPATH + "/MicrosoftAjax.debug.js");
                               
-                public static readonly string MicrosoftAjax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftAjax.min.js") ? Url("MicrosoftAjax.min.js") : Url("MicrosoftAjax.js");
+                public static readonly string MicrosoftAjax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftAjax.min.js") ? Url("MicrosoftAjax.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/MicrosoftAjax.js") : Url("MicrosoftAjax.js")+"?"+T4Extensions.TimestampString(URLPATH + "/MicrosoftAjax.js");
                               
-                public static readonly string MicrosoftMvcAjax_debug_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftMvcAjax.debug.min.js") ? Url("MicrosoftMvcAjax.debug.min.js") : Url("MicrosoftMvcAjax.debug.js");
+                public static readonly string MicrosoftMvcAjax_debug_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftMvcAjax.debug.min.js") ? Url("MicrosoftMvcAjax.debug.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/MicrosoftMvcAjax.debug.js") : Url("MicrosoftMvcAjax.debug.js")+"?"+T4Extensions.TimestampString(URLPATH + "/MicrosoftMvcAjax.debug.js");
                               
-                public static readonly string MicrosoftMvcAjax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftMvcAjax.min.js") ? Url("MicrosoftMvcAjax.min.js") : Url("MicrosoftMvcAjax.js");
+                public static readonly string MicrosoftMvcAjax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftMvcAjax.min.js") ? Url("MicrosoftMvcAjax.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/MicrosoftMvcAjax.js") : Url("MicrosoftMvcAjax.js")+"?"+T4Extensions.TimestampString(URLPATH + "/MicrosoftMvcAjax.js");
                               
-                public static readonly string MicrosoftMvcValidation_debug_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftMvcValidation.debug.min.js") ? Url("MicrosoftMvcValidation.debug.min.js") : Url("MicrosoftMvcValidation.debug.js");
+                public static readonly string MicrosoftMvcValidation_debug_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftMvcValidation.debug.min.js") ? Url("MicrosoftMvcValidation.debug.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/MicrosoftMvcValidation.debug.js") : Url("MicrosoftMvcValidation.debug.js")+"?"+T4Extensions.TimestampString(URLPATH + "/MicrosoftMvcValidation.debug.js");
                               
-                public static readonly string MicrosoftMvcValidation_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftMvcValidation.min.js") ? Url("MicrosoftMvcValidation.min.js") : Url("MicrosoftMvcValidation.js");
+                public static readonly string MicrosoftMvcValidation_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftMvcValidation.min.js") ? Url("MicrosoftMvcValidation.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/MicrosoftMvcValidation.js") : Url("MicrosoftMvcValidation.js")+"?"+T4Extensions.TimestampString(URLPATH + "/MicrosoftMvcValidation.js");
                               
-                public static readonly string modernizr_1_6_min_js = Url("modernizr-1.6.min.js");
+                public static readonly string modernizr_1_6_min_js = Url("modernizr-1.6.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/modernizr-1.6.min.js");
             }
         
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -308,7 +317,7 @@ namespace Links {
                 private const string URLPATH = "~/Scripts/javascript/media";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-                public static readonly string soundplayer_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/soundplayer.min.js") ? Url("soundplayer.min.js") : Url("soundplayer.js");
+                public static readonly string soundplayer_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/soundplayer.min.js") ? Url("soundplayer.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/soundplayer.js") : Url("soundplayer.js")+"?"+T4Extensions.TimestampString(URLPATH + "/soundplayer.js");
                               
             }
         
@@ -317,11 +326,11 @@ namespace Links {
                 private const string URLPATH = "~/Scripts/javascript/profiling";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-                public static readonly string charts_swf = Url("charts.swf");
-                public static readonly string config_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/config.min.js") ? Url("config.min.js") : Url("config.js");
+                public static readonly string charts_swf = Url("charts.swf")+"?"+T4Extensions.TimestampString(URLPATH + "/charts.swf");
+                public static readonly string config_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/config.min.js") ? Url("config.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/config.js") : Url("config.js")+"?"+T4Extensions.TimestampString(URLPATH + "/config.js");
                               
-                public static readonly string yahoo_profiling_css = Url("yahoo-profiling.css");
-                public static readonly string yahoo_profiling_min_js = Url("yahoo-profiling.min.js");
+                public static readonly string yahoo_profiling_css = Url("yahoo-profiling.css")+"?"+T4Extensions.TimestampString(URLPATH + "/yahoo-profiling.css");
+                public static readonly string yahoo_profiling_min_js = Url("yahoo-profiling.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/yahoo-profiling.min.js");
             }
         
         }
@@ -336,18 +345,6 @@ namespace Links {
                 private const string URLPATH = "~/Scripts/swf/lib";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                public static class soundmanager {
-                    private const string URLPATH = "~/Scripts/swf/lib/soundmanager";
-                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
-                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-                    public static readonly string soundmanager2_swf = Url("soundmanager2.swf");
-                    public static readonly string soundmanager2_debug_swf = Url("soundmanager2_debug.swf");
-                    public static readonly string soundmanager2_flash_xdomain_zip = Url("soundmanager2_flash_xdomain.zip");
-                    public static readonly string soundmanager2_flash9_swf = Url("soundmanager2_flash9.swf");
-                    public static readonly string soundmanager2_flash9_debug_swf = Url("soundmanager2_flash9_debug.swf");
-                }
-            
             }
         
         }
@@ -364,8 +361,24 @@ namespace Links {
             private const string URLPATH = "~/Content/css";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string handheld_css = Url("handheld.css");
-            public static readonly string style_css = Url("style.css");
+            public static readonly string css_chirp_config = Url("css.chirp.config")+"?"+T4Extensions.TimestampString(URLPATH + "/css.chirp.config");
+            public static readonly string main_css = Url("main.css")+"?"+T4Extensions.TimestampString(URLPATH + "/main.css");
+            public static readonly string handheld_css = Url("handheld.css")+"?"+T4Extensions.TimestampString(URLPATH + "/handheld.css");
+            public static readonly string media_css = Url("media.css")+"?"+T4Extensions.TimestampString(URLPATH + "/media.css");
+            public static readonly string style_hybrid_less = Url("style.hybrid.less")+"?"+T4Extensions.TimestampString(URLPATH + "/style.hybrid.less");
+            public static readonly string style_css = Url("style.css")+"?"+T4Extensions.TimestampString(URLPATH + "/style.css");
+            public static readonly string style_min_css = Url("style.min.css")+"?"+T4Extensions.TimestampString(URLPATH + "/style.min.css");
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class fonts {
+            private const string URLPATH = "~/Content/fonts";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string house_whiteboard_font_by_callsignkatejones_webfont_eot = Url("house_whiteboard_font_by_callsignkatejones-webfont.eot")+"?"+T4Extensions.TimestampString(URLPATH + "/house_whiteboard_font_by_callsignkatejones-webfont.eot");
+            public static readonly string house_whiteboard_font_by_callsignkatejones_webfont_svg = Url("house_whiteboard_font_by_callsignkatejones-webfont.svg")+"?"+T4Extensions.TimestampString(URLPATH + "/house_whiteboard_font_by_callsignkatejones-webfont.svg");
+            public static readonly string house_whiteboard_font_by_callsignkatejones_webfont_ttf = Url("house_whiteboard_font_by_callsignkatejones-webfont.ttf")+"?"+T4Extensions.TimestampString(URLPATH + "/house_whiteboard_font_by_callsignkatejones-webfont.ttf");
+            public static readonly string house_whiteboard_font_by_callsignkatejones_webfont_woff = Url("house_whiteboard_font_by_callsignkatejones-webfont.woff")+"?"+T4Extensions.TimestampString(URLPATH + "/house_whiteboard_font_by_callsignkatejones-webfont.woff");
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -373,8 +386,32 @@ namespace Links {
             private const string URLPATH = "~/Content/images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string apple_touch_icon_png = Url("apple-touch-icon.png");
-            public static readonly string favicon_ico = Url("favicon.ico");
+            public static readonly string apple_touch_icon_png = Url("apple-touch-icon.png")+"?"+T4Extensions.TimestampString(URLPATH + "/apple-touch-icon.png");
+            public static readonly string favicon_ico = Url("favicon.ico")+"?"+T4Extensions.TimestampString(URLPATH + "/favicon.ico");
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class icons {
+                private const string URLPATH = "~/Content/images/icons";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string bullet_arrow_down_png = Url("bullet_arrow_down.png")+"?"+T4Extensions.TimestampString(URLPATH + "/bullet_arrow_down.png");
+                public static readonly string bullet_arrow_right_png = Url("bullet_arrow_right.png")+"?"+T4Extensions.TimestampString(URLPATH + "/bullet_arrow_right.png");
+                public static readonly string control_end_png = Url("control_end.png")+"?"+T4Extensions.TimestampString(URLPATH + "/control_end.png");
+                public static readonly string control_pause_png = Url("control_pause.png")+"?"+T4Extensions.TimestampString(URLPATH + "/control_pause.png");
+                public static readonly string control_play_png = Url("control_play.png")+"?"+T4Extensions.TimestampString(URLPATH + "/control_play.png");
+                public static readonly string control_start_png = Url("control_start.png")+"?"+T4Extensions.TimestampString(URLPATH + "/control_start.png");
+                public static readonly string control_stop_png = Url("control_stop.png")+"?"+T4Extensions.TimestampString(URLPATH + "/control_stop.png");
+                public static readonly string sound_png = Url("sound.png")+"?"+T4Extensions.TimestampString(URLPATH + "/sound.png");
+                public static readonly string sound_low_png = Url("sound_low.png")+"?"+T4Extensions.TimestampString(URLPATH + "/sound_low.png");
+            }
+        
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class sounds {
+            private const string URLPATH = "~/Content/sounds";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string Daft_Punk___Derezzed_mp3 = Url("Daft Punk - Derezzed.mp3")+"?"+T4Extensions.TimestampString(URLPATH + "/Daft Punk - Derezzed.mp3");
         }
     
     }
@@ -403,6 +440,349 @@ static class T4MVCHelpers {
     }
 }
 
+
+namespace Website.Controllers.Blogs {
+    public partial class BlogController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public BlogController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected BlogController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Index() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Tag() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Tag);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public BlogController Actions { get { return MVC.Blog; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Blog";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Index = "Index";
+            public readonly string Tag = "Tag";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string Index = "~/Views/Blog/Index.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_BlogController: Website.Controllers.Blogs.BlogController {
+        public T4MVC_BlogController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Index(string blogName) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            callInfo.RouteValueDictionary.Add("blogName", blogName);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Tag(string blogName, string tag) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Tag);
+            callInfo.RouteValueDictionary.Add("blogName", blogName);
+            callInfo.RouteValueDictionary.Add("tag", tag);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Website.Controllers.Blogs {
+    public partial class PostController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public PostController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected PostController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Details() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Details);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Edit() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Delete() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public PostController Actions { get { return MVC.Post; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Post";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Index = "Index";
+            public readonly string Details = "Details";
+            public readonly string Create = "Create";
+            public readonly string Edit = "Edit";
+            public readonly string Delete = "Delete";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_PostController: Website.Controllers.Blogs.PostController {
+        public T4MVC_PostController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Index() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Details(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Create() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Create(Website.Models.Blog.Post p) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
+            callInfo.RouteValueDictionary.Add("p", p);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Edit(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Edit(int id, Website.Models.Blog.Post p) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("p", p);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Delete(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Website.Controllers {
+    public partial class HomeController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public HomeController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected HomeController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public HomeController Actions { get { return MVC.Home; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Home";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Index = "Index";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string Index = "~/Views/Home/Index.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_HomeController: Website.Controllers.HomeController {
+        public T4MVC_HomeController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Index() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace T4MVC {
+    public class SharedController {
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            static readonly _Layouts s_Layouts = new _Layouts();
+            public _Layouts Layouts { get { return s_Layouts; } }
+            public partial class _Layouts{
+                public readonly string _Layout = "~/Views/Shared/Layouts/_Layout.cshtml";
+                public readonly string BlogLayout = "~/Views/Shared/Layouts/BlogLayout.cshtml";
+            }
+            static readonly _Partials s_Partials = new _Partials();
+            public _Partials Partials { get { return s_Partials; } }
+            public partial class _Partials{
+                public readonly string Navigation = "~/Views/Shared/Partials/Navigation.cshtml";
+                static readonly _Blog s_Blog = new _Blog();
+                public _Blog Blog { get { return s_Blog; } }
+                public partial class _Blog{
+                    public readonly string Comment = "~/Views/Shared/Partials/Blog/Comment.cshtml";
+                    public readonly string Post = "~/Views/Shared/Partials/Blog/Post.cshtml";
+                }
+            }
+        }
+    }
+
+}
+
+namespace Website.Areas.Music.Controllers {
+    public partial class HomeController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public HomeController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected HomeController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Index() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Tag() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Tag);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public HomeController Actions { get { return MVC.Music.Home; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Music";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Home";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Index = "Index";
+            public readonly string Tag = "Tag";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string Index = "~/Areas/Music/Views/Home/Index.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_HomeController: Website.Areas.Music.Controllers.HomeController {
+        public T4MVC_HomeController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Index(string blogName) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            callInfo.RouteValueDictionary.Add("blogName", blogName);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Tag(string blogName, string tag) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Tag);
+            callInfo.RouteValueDictionary.Add("blogName", blogName);
+            callInfo.RouteValueDictionary.Add("tag", tag);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace T4MVC.Music {
+    public class SharedController {
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+        }
+    }
+
+}
 
 
 

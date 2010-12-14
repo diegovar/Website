@@ -1,0 +1,24 @@
+﻿@model Blog
+@using Website.Models.Blog;
+@{
+    Layout = Layout = MVC.Shared.Views.Layouts._Layout;
+}
+
+<h2>@Model.Name</h2>
+
+
+<section id="posts">
+@foreach (var post in Model.Posts)
+{
+    Html.RenderPartial(MVC.Shared.Views.Partials.Blog.Post, post);
+}
+</section>
+
+<section id="music player">
+    @MediaHelpers.MusicPlayer(Model.Posts.SelectMany(p => p.Tracks).ToList())
+</section>
+
+@section scripts {
+    <script src="@Links.Scripts.javascript.lib.jquery_jplayer_min_js"></script>
+    <script src="@Links.Scripts.javascript.media.soundplayer_js"></script>
+}
